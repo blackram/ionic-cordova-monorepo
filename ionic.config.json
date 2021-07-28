@@ -2,7 +2,11 @@
   "projects": {
     "app-two": {
       "name": "app-two",
-      "integrations": {},
+      "integrations": {
+        "cordova": {
+          "root": "integrations/app-two"
+        }
+      },
       "type": "angular",
       "root": "projects/app-two"
     }
