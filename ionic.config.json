@@ -1,0 +1,10 @@
+{
+  "projects": {
+    "app-two": {
+      "name": "app-two",
+      "integrations": {},
+      "type": "angular",
+      "root": "projects/app-two"
+    }
+  }
+}
