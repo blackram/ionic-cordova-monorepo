@@ -8,7 +8,10 @@
         }
       },
       "type": "angular",
-      "root": "projects/app-two"
+      "root": "projects/app-two",
+      "hooks": {
+        "build:after": "./scripts/build-after.js" 
+      }
     }
   }
 }
