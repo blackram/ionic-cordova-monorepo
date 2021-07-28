@@ -10,6 +10,9 @@
 # dependencies
 /node_modules
 
+# cordova integration
+/integations/app-two/node-modules
+
 # profiling files
 chrome-profiler-events*.json
 
