@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IonicModule } from '@ionic/angular';
+import { AppCommonModule } from 'app-common';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { IonicModule } from '@ionic/angular';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AppCommonModule,
     IonicModule.forRoot()
   ],
   providers: [],
