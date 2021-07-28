@@ -12,6 +12,11 @@
 
 # cordova integration
 /integrations/app-two/node_modules
+/integrations/app-two/www
+/integrations/app-two/platforms/android/app/src/main/assets/www
+/integrations/app-two/platforms/android/app/src/main/res/*
+/projects/app-one/node_modules
+/projects/app-two/node_modules
 
 # profiling files
 chrome-profiler-events*.json
