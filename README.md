@@ -16,7 +16,7 @@ Use a lower version of node.
 
 Overall there are no magic configuration changes required except for dealing with the output from the ionic cordova build. The output does not make its way to the /www folder and so is not deployed to the android platform as it should. A simple workaround is to create a hook script that runs after the angular build and copies the output from the /dist folder to the /www folder.
 
-### Final project structure
+### Final project structure (For android)
 
 This will be the final file structure at three levels deep showing the two applications, a shared library and also the cordova output in the integrations folder.
 
@@ -385,3 +385,63 @@ _ionic.config.json_
 ionic cordova build android --project app-two
 ```
 
+## Bonus Steps for Adding IOS
+
+These are the additional steps for adding an integration for IOS
+
+## Step 9 - integrate IOS
+
+Add the ios platform
+
+```console 
+ionic cordova platform add ios --project app-two
+```
+
+Update the hook script to include ios
+
+_/projects/app-two/scripts/build-after.js_
+```javascript
+const { exec } = require('child_process');
+const rimraf = require('rimraf');
+
+handleOutput = (error, stdout, stderr) => {
+
+  if (error) {
+    console.log(error.message);
+  } else if (stderr) {
+    console.log(stderr);
+ } else {
+    console.log(stdout);
+  }
+}
+
+module.exports = function(context) {
+
+  console.log('**** in build-after ****');
+  console.log(context);  
+    
+  if (context.build.platform === 'android' || context.build.platform === 'ios') {
+
+    console.log('**** copying assets to integrations ****');
+    
+    const project_dir = `${context.project.dir}`;
+    
+    const source_dir = `${project_dir}/../../dist/${context.build.project}`;
+    const target_dir = `${project_dir}/../../integrations/${context.build.project}`;
+
+    rimraf(`{target_dir}\www`, handleOutput);
+    exec(`cp -r ${source_dir}/* ${target_dir}/www`, handleOutput);
+ }
+
+}
+```
+
+Commit all before the build because of the folders that get added. I am working on a macbook so this will work :)
+
+```console
+ionic cordova build ios --project app-two
+```
+
+## Building from a clone
+
+So you've cloned the repo and tried to build

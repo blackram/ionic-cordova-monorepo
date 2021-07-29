@@ -17,7 +17,7 @@ module.exports = function(context) {
   console.log('**** in build-after ****');
   console.log(context);  
     
-  if (context.build.platform === 'android') {
+  if (context.build.platform === 'android' || context.build.platform === 'ios') {
 
     console.log('**** copying assets to integrations ****');
     
