@@ -444,4 +444,58 @@ ionic cordova build ios --project app-two
 
 ## Building from a clone
 
-So you've cloned the repo and tried to build
+Clone your source as usual or run this:
+
+```console
+git clone https://github.com/blackram/ionic-cordova-monorepo.git
+cd ionic-cordova-monorepo
+```
+
+Must update packages including the library app-common library first
+
+```console
+cd projects/app-common
+npm install
+cd ../../
+
+npm install
+```
+
+Now build what you want
+
+_app-common (shared library)_
+```console
+ng build --project app-common
+```
+_app-one (angular application)_
+```console
+ng build --project app-one
+```
+
+_app-two (ionic application)_
+```console
+ionic cordova build --project app-two android
+ionic cordova build --project app-two ios
+```
+
+or serve
+```console
+ng serve --project app-one
+ionic serve --project app-two
+```
+
+### Issues:
+
+You may encounter an issue with the PlatformApi missing (https://stackoverflow.com/questions/46799446/cordova-unable-to-load-platformapi)
+
+Remove both platforms and then rebuilding will *fix* it:
+```console
+ionic cordova platform rm android --project app-two
+ionic cordova platform rm ios --project app-two
+```
+
+I have only seen this since using a clean install. I suspect it is becuase of the way I am ignoring some folders. YMMV
+
+
+
+
