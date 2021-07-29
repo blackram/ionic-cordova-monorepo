@@ -15,6 +15,7 @@
 /integrations/app-two/www
 /integrations/app-two/platforms/android/app/src/main/assets/www
 /integrations/app-two/platforms/android/app/src/main/res/*
+/projects/app-common/node-modules
 /projects/app-one/node_modules
 /projects/app-two/node_modules
 
